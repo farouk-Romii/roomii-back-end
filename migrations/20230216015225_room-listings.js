@@ -9,8 +9,7 @@ exports.up = function(knex) {
         table.string('photos');
         table.string('price');
         table.string('location');
-        table.integer('user_id');
-        table.foreign('user_id').references('id').inTable('users');
+        table.integer('user_id').references('id').inTable('users');
      })
 };
 
