@@ -22,10 +22,15 @@ const deleteListing = async (id) => {
     return data;
 }
 
+const getRoomById = async (id) => {
+    let data = await pool.query("SELECT * FROM public.room_listings WHERE id = $1",[id]).then(result => { return result.rows[0] });
+    return data;
+}
 
 module.exports = {
     getListing,
     createListing,
     changeListing,
-    deleteListing
+    deleteListing,
+    getRoomById
 }

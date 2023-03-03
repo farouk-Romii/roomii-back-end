@@ -11,8 +11,10 @@ const addFav = async(req,res) => {
 
 
 const removeFav = async (req,res) => {
-    const id = req.params.id;
-    const data = await favoritesModels.removeFromFav(id);
+    const listId = req.params.listId;
+    const userId = req.params.userId;
+    const data = await favoritesModels.removeFromFav(listId,userId);
+    console.log(data)
     return data ? res.status(200).send({message: "data deleted"}) : res.sendStatus(404);
     
 }

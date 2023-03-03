@@ -5,7 +5,11 @@ const getlist = async (req,res)=> {
     return data ? res.status(200).send(data) : res.sendStatus(404);
 }
 
-
+const getRoom = async (req,res) => {
+    const id = req.params.id;
+    const data = await roomListingsModels.getRoomById(id)
+    return data ? res.status(200).send(data) : res.sendStatus(404);
+}
 
 const  createList = async (req,res) => {
     const {description,photos,price,location} = req.body;
@@ -33,5 +37,6 @@ module.exports = {
     getlist,
     createList,
     changeList,
-    deletList
+    deletList,
+    getRoom
 }

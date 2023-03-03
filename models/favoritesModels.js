@@ -6,8 +6,8 @@ const addToFav = async(userId,listId)=> {
 };
 
 
-const removeFromFav = async(id)=> {
-    let data = await pool.query('DELETE FROM public.favorites  WHERE id = $1',[id]).then(result => {return result.rows[0]});
+const removeFromFav = async(listId,userId)=> {
+    let data = await pool.query('DELETE FROM public.favorites  WHERE user_id = $2 AND room_listing_id = $1 ' ,[listId,userId]).then(result => {return result.rows[0]});
     return data;
 };
 
