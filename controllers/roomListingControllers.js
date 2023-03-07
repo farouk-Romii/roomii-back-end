@@ -12,8 +12,8 @@ const getRoom = async (req,res) => {
 }
 
 const  createList = async (req,res) => {
-    const {description,photos,price,location} = req.body;
-    const data = await roomListingsModels.createListing(description,photos,price,location);
+    const {description,photos,price,location,userId} = req.body;
+    const data = await roomListingsModels.createListing(description,photos,price,location,userId);
     return data ? res.status(200).send(data) : res.sendStatus(404);
 
 

@@ -6,8 +6,8 @@ const getListing = async() => {
 }
 
 
-const createListing = async (description,photos,price,location) => {
-    let data = await pool.query("INSERT INTO public.room_listings (description,photos,price,location) VALUES($1,$2,$3,$4) RETURNING *",[description,photos,price,location]).then(result => {return result.rows[0]})
+const createListing = async (description,photos,price,location,userId) => {
+    let data = await pool.query("INSERT INTO public.room_listings (description,photos,price,location,user_id) VALUES($1,$2,$3,$4,$5) RETURNING *",[description,photos,price,location,userId]).then(result => {return result.rows[0]})
     return data;
 }
 
