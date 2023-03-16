@@ -13,7 +13,7 @@ const createListing = async (description,photos,price,location,userId) => {
 
 
 const changeListing = async (description,photos,price,location,id) => {
-    let data = await pool.query('UPDATE public.room_listings SET description = $1 photos = $2 price = $3 location = $4 WHERE id = $2 RETURNING *',[description,photos,price,location,id]).then(result => {return result.rows[0]});
+    let data = await pool.query('UPDATE public.room_listings SET description = $1,photos = $2,price = $3,location = $4 WHERE room_listings.id = $5 RETURNING *',[description,photos,price,location,id]).then(result => {return result.rows[0]});
     return data;
 }
 
@@ -23,7 +23,7 @@ const deleteListing = async (id) => {
 }
 
 const getRoomById = async (id) => {
-    let data = await pool.query("SELECT * FROM public.room_listings WHERE id = $1",[id]).then(result => { return result.rows[0] });
+    let data = await pool.query("SELECT * FROM public.room_listings WHERE room_listings.id = $1",[id]).then(result => { return result.rows[0] });
     return data;
 }
 
